@@ -9,18 +9,20 @@ namespace BookstoreProject.Controllers
 {
     public class HomeController : Controller
     {
-        //Creates an instance of the context file
-        private BookstoreContext context { get; set; }
+        private IBookstoreRepository repo;
 
-        //Creates a constructor
-        public HomeController(BookstoreContext temp)
+        public HomeController (IBookstoreRepository temp)
         {
-            context = temp;
+            repo = temp;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNum = 1)
         {
-            var BookstoreData = context.Books.ToList();
+            int pageSize = 10;
+
+            var BookstoreData = repo.Books
+                .OrderBy(b => b.Title)
+                .Take(pageSize);
 
             return View(BookstoreData);
         }
