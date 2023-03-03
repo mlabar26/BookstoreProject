@@ -18,11 +18,11 @@ namespace BookstoreProject.Controllers
 
         public IActionResult Index(int pageNum = 1)
         {
-            int pageSize = 10;
+            int numOnPage = 10;
 
             var BookstoreData = repo.Books
                 .OrderBy(b => b.Title)
-                .Take(pageSize);
+                .Take(numOnPage);
 
             return View(BookstoreData);
         }
