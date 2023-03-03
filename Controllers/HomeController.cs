@@ -1,4 +1,5 @@
 ﻿using BookstoreProject.Models;
+using BookstoreProject.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,21 @@ namespace BookstoreProject.Controllers
 
         public IActionResult Index(int pageNum = 1)
         {
-            int numOnPage = 10;
+            int pageSize = 10;
 
-            var BookstoreData = repo.Books
+            var BookstoreData = new BooksViewModel
+            {
+                Books = repo.Books
                 .OrderBy(b => b.Title)
-                .Take(numOnPage);
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumBooks = repo.Books.Count(),
+                    BooksPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
 
             return View(BookstoreData);
         }
