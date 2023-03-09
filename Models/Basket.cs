@@ -33,7 +33,7 @@ namespace BookstoreProject.Models
         //Pull price over
         public double CalculateTotal()
         {
-            double sum = Items.Sum(x => x.Quantity * Price);
+            double sum = Items.Sum(x => x.Quantity * 20);
 
             return sum;
         }
