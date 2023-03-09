@@ -5,6 +5,7 @@
 
 <h2>Your Cart</h2>
 
+@*Extra part of assignment was added here!*@
 <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
@@ -21,7 +22,7 @@
             <tr>
                 <td>@i.Book.Title</td>
                 <td>@i.Quantity</td>
-                <td>20</td> 
+                <td>20</td>
                 <td>@(i.Quantity * i.Book.Price)</td>
             </tr>
         }
@@ -35,6 +36,7 @@
     </tfoot>
 </table>
 
+@*Extra part of assignment was added here!*@
 <div class="alert alert-success alert-dismissible">
     Your Cart was succesfully loaded and is ready to roll!
 </div>
