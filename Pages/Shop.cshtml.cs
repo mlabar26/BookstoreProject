@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookstoreProject.Infrastructure;
 using BookstoreProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -19,19 +20,21 @@ namespace BookstoreProject.Pages
 
         public Basket basket { get; set; }
 
-        public void OnGet(Basket b)
+        public void OnGet()
         {
-            basket = b;
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
         }
 
         public IActionResult OnPost(int BookId)
         {
             Book b = repo.Books.FirstOrDefault(x => x.BookId == BookId);
 
-            basket = new Basket();
+            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
             basket.AddItem(b, 1);
 
-            return RedirectToPage(basket);
+            HttpContext.Session.SetJson("basket", basket);
+
+            return RedirectToPage();
         }
     }
 }
