@@ -19,8 +19,9 @@ namespace BookstoreProject.Pages
 
         public Basket basket { get; set; }
 
-        public void OnGet()
+        public void OnGet(Basket b)
         {
+            basket = b;
         }
 
         public IActionResult OnPost(int BookId)
@@ -30,7 +31,7 @@ namespace BookstoreProject.Pages
             basket = new Basket();
             basket.AddItem(b, 1);
 
-            return RedirectToPage();
+            return RedirectToPage(basket);
         }
     }
 }
