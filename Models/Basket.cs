@@ -30,10 +30,9 @@ namespace BookstoreProject.Models
             }
         }
 
-        //Pull price over
         public double CalculateTotal()
         {
-            double sum = Items.Sum(x => x.Quantity * 20);
+            double sum = Items.Sum(x => x.Quantity * x.Book.Price);
 
             return sum;
         }
@@ -42,6 +41,8 @@ namespace BookstoreProject.Models
     public class BasketLineItem
     {
         public int LineID { get; set; }
+
+        //This creates an object from the book class
         public Book Book { get; set; }
         public int Quantity { get; set; }
     }
