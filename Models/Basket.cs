@@ -9,7 +9,8 @@ namespace BookstoreProject.Models
     {
         public List<BasketLineItem> Items { get; set; } = new List<BasketLineItem>();
 
-        public void AddItem (Book book, int qty)
+        //Allows method to be overriden and then inherited
+        public virtual void AddItem (Book book, int qty)
         {
             BasketLineItem line = Items
                 .Where(b => b.Book.BookId == book.BookId)
@@ -28,6 +29,16 @@ namespace BookstoreProject.Models
             {
                 line.Quantity += qty;
             }
+        }
+
+        public virtual void RemoveItem (Book book)
+        {
+            Items.RemoveAll(x => x.Book.BookId == book.BookId);
+        }
+
+        public virtual void ClearBasket ()
+        {
+            Items.Clear();
         }
 
         public double CalculateTotal()

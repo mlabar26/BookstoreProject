@@ -35,12 +35,17 @@ namespace BookstoreProject
                 options.UseSqlite(Configuration["ConnectionStrings:BookstoreDBConnection"]);
             });
 
+            //We are actually talking about EF when we have the IBook
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
 
             services.AddRazorPages();
 
             services.AddDistributedMemoryCache();
             services.AddSession();
+
+            //Get the basket instance for the particular session (whether its new or was already set up)
+            services.AddScoped<Basket>(x => SessionBasket.GetBasket(x));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
