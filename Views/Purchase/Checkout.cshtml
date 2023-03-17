@@ -7,7 +7,11 @@
 
 <p>Please enter the necessary information. Thanks!</p>
 
-<form method="post">
+<br />
+
+<form method="post" asp-controller="Purchase" asp-action="Checkout">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <h4>Ship To:</h4>
 
@@ -15,6 +19,8 @@
         <label asp-for="Name">Name:</label>
         <input asp-for="Name" class="form-control" />
     </div>
+
+    <br /><br />
 
     <h4>Address:</h4>
 
@@ -33,28 +39,20 @@
         <input asp-for="AddressLine3" class="form-control" />
     </div>
 
-    <h4>City:</h4>
-
     <div class="form-group">
         <label asp-for="City">City:</label>
         <input asp-for="City" class="form-control" />
     </div>
-
-    <h4>State:</h4>
 
     <div class="form-group">
         <label asp-for="State">State:</label>
         <input asp-for="State" class="form-control" />
     </div>
 
-    <h4>Zipcode:</h4>
-
     <div class="form-group">
         <label asp-for="Zipcode">Zipcode:</label>
         <input asp-for="Zipcode" class="form-control" />
     </div>
-
-    <h4>Country:</h4>
 
     <div class="form-group">
         <label asp-for="Country">Country:</label>
@@ -63,7 +61,7 @@
 
     <div class="checkbox">
         <label>
-            <input asp-for="Anonymous" /> Purchase Anonymous
+            <input asp-for="Anonymous" /> Purchase Anonymously
         </label>
     </div>
 

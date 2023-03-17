@@ -16,24 +16,24 @@ namespace BookstoreProject.Models
         [BindNever]
         public ICollection<BasketLineItem> Lines { get; set; }
 
-        [Required(ErrorMessage = "Please enter a name:")]
+        [Required(ErrorMessage = "Please enter a name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please enter a name:")]
+        [Required(ErrorMessage = "Please enter an address")]
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public string AddressLine3 { get; set; }
 
-        [Required(ErrorMessage = "Please enter a City:")]
+        [Required(ErrorMessage = "Please enter a city")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Please enter a State:")]
+        [Required(ErrorMessage = "Please enter a state")]
         public string State { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Zipcode:")]
+        [Required(ErrorMessage = "Please enter a zipcode")]
         public string Zipcode { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Country:")]
+        [Required(ErrorMessage = "Please enter a country")]
         public string Country { get; set; }
 
         public bool Anonymous { get; set; }

@@ -37,6 +37,7 @@ namespace BookstoreProject
 
             //We are actually talking about EF when we have the IBook
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+            services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
 
             services.AddRazorPages();
 

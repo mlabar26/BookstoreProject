@@ -2,30 +2,10 @@
 
 namespace BookstoreProject.Migrations
 {
-    public partial class PurchasesTable : Migration
+    public partial class UpdateBro : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Books",
-                columns: table => new
-                {
-                    BookId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(nullable: false),
-                    Author = table.Column<string>(nullable: false),
-                    Publisher = table.Column<string>(nullable: false),
-                    Isbn = table.Column<string>(nullable: false),
-                    Classification = table.Column<string>(nullable: false),
-                    Category = table.Column<string>(nullable: false),
-                    PageCount = table.Column<int>(nullable: false),
-                    Price = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Books", x => x.BookId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Purchases",
                 columns: table => new
@@ -89,9 +69,6 @@ namespace BookstoreProject.Migrations
         {
             migrationBuilder.DropTable(
                 name: "BasketLineItem");
-
-            migrationBuilder.DropTable(
-                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Purchases");

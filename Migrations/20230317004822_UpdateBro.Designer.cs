@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookstoreProject.Migrations
 {
     [DbContext(typeof(BookstoreContext))]
-    [Migration("20230316153158_PurchasesTable")]
-    partial class PurchasesTable
+    [Migration("20230317004822_UpdateBro")]
+    partial class UpdateBro
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
